@@ -24,7 +24,7 @@ jobs:
     - name: Build and Push Docker Image
       run: |
         docker build -t leeva:latest .
-        docker tag my-public-repo:latest public.ecr.aws/t2a7r0x0/leeva:latest
+        docker tag leeva:latest public.ecr.aws/t2a7r0x0/leeva:latest
         docker push public.ecr.aws/t2a7r0x0/leeva:latest
 
         
