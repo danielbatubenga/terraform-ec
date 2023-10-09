@@ -3,7 +3,7 @@ name: Docker Build and Push
 on:
   push:
     branches:
-      - main  # Defina a branch na qual deseja acionar a ação
+      - main 
 
 jobs:
   build-and-push:
@@ -26,3 +26,5 @@ jobs:
         docker build -t leeva:latest .
         docker tag my-public-repo:latest public.ecr.aws/t2a7r0x0/leeva:latest
         docker push public.ecr.aws/t2a7r0x0/leeva:latest
+
+        
