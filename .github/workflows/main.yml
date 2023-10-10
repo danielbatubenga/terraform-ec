@@ -45,10 +45,6 @@ jobs:
           docker build -t my-public-repo .
           docker tag my-public-repo:latest public.ecr.aws/t2a7r0x0/my-public-repo:latest        
           docker push public.ecr.aws/t2a7r0x0/my-public-repo:latest
-          
-      - name: Download task definition
-        run: |
-          aws ecs describe-task-definition --task-definition tk-leeva --query taskDefinition > task-definition.json
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
