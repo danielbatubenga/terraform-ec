@@ -47,6 +47,5 @@ jobs:
           docker push public.ecr.aws/t2a7r0x0/my-public-repo:latest
 
       - name: Update task definition
-        id: update-task-definition
-        run: |
-          - aws ecs update-service --cli-input-json file://task-definition.json
+        run: 
+          aws ecs update-service --cli-input-json file://task-definition.json
