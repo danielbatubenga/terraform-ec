@@ -1,73 +1,33 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:638548311250:task-definition/tk-leeva:2",
-    "containerDefinitions": [
-        {
-            "name": "leeva-container",
-            "image": "public.ecr.aws/t2a7r0x0/my-public-repo:latest",
-            "cpu": 256,
-            "memory": 512,
-            "portMappings": [
-                {
-                    "containerPort": 80,
-                    "hostPort": 80,
-                    "protocol": "tcp"
-                }
-            ],
-            "essential": true,
-            "environment": [],
-            "mountPoints": [],
-            "volumesFrom": [],
-            "logConfiguration": {
-                "logDriver": "awslogs",
-                "options": {
-                    "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/ubuntu",
-                    "awslogs-region": "us-east-1",
-                    "awslogs-stream-prefix": "ecs"
-                }
-            }
-        }
-    ],
     "family": "tk-leeva",
-    "taskRoleArn": "arn:aws:iam::638548311250:role/Fargate-ECR-Policy",
-    "executionRoleArn": "arn:aws:iam::638548311250:role/Fargate-ECR-Policy",
-    "networkMode": "awsvpc",
-    "revision": 2,
-    "volumes": [],
-    "status": "ACTIVE",
-    "requiresAttributes": [
-        {
-            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
-        },
-        {
-            "name": "ecs.capability.execution-role-awslogs"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
-        },
-        {
-            "name": "ecs.capability.task-eni"
-        },
-        {
-            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    "containerDefinitions": [
+      {
+        "name": "lv-cluster",
+        "image": "public.ecr.aws/t2a7r0x0/my-public-repo:latest",
+        "cpu": 512,
+        "memoryReservation": 512,
+        "portMappings": [
+          {
+            "containerPort": 80,
+            "protocol": "tcp"
+          }
+        ],
+        "essential": true,
+        "logConfiguration": {
+          "logDriver": "awslogs",
+       "options": {
+            "awslogs-create-group": "true",
+            "awslogs-group": "/ecs/ubuntu",
+            "awslogs-region": "us-east-1",
+            "awslogs-stream-prefix": "ecs"
+          }
+         }
         }
-    ],
-    "placementConstraints": [],
-    "compatibilities": [
-        "EC2",
-        "FARGATE"
-    ],
-    "requiresCompatibilities": [
-        "FARGATE"
-    ],
-    "cpu": "256",
-    "memory": "512",
-    "registeredAt": "2023-10-10T15:49:36.060000+01:00",
-    "registeredBy": "arn:aws:iam::638548311250:user/DanielDevOps"
-}
+      ],
+   
+    "networkMode": "awsvpc",
+    "requiresCompatibilities": ["FARGATE"],
+    "executionRoleArn": "arn:aws:iam::638548311250:role/Fargate-ECR-Policy",
+    "cpu": "512",
+    "memory": "1024"
+  }
