@@ -54,7 +54,7 @@ jobs:
       run: terraform apply -auto-approve
 
     - name: Destroy Infrastructure
-      if: steps.terraform-approval.outputs.approved == 'true'  # Execute apenas se a aprovação manual for 'true'
+      if: steps.terraform-approval.outputs.approved == 'true'  # Execute apenas se a aprovação manual for 'true'##########
       run: terraform destroy -auto-approve
 
 
