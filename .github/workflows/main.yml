@@ -44,7 +44,7 @@ jobs:
 
     - name: "Manual Approval for Terraform"
       id: terraform-approval
-      run: echo "::set-output name=approved::false"  # Defina como 'true' manualmente após revisar o plano Terraform
+      run: echo "::set-output name=approved::true"  # Defina como 'true' manualmente após revisar o plano Terraform
 
     - name: Apply Infrastructure Changes
       if: steps.terraform-approval.outputs.approved == 'true'
