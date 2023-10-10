@@ -1,33 +1,17 @@
 {
-    "family": "tk-leeva",
-    "containerDefinitions": [
-      {
-        "name": "lv-cluster",
-        "image": "public.ecr.aws/t2a7r0x0/my-public-repo:latest",
-        "cpu": 512,
-        "memoryReservation": 512,
-        "portMappings": [
-          {
-            "containerPort": 80,
-            "protocol": "tcp"
-          }
-        ],
-        "essential": true,
-        "logConfiguration": {
-          "logDriver": "awslogs",
-       "options": {
-            "awslogs-create-group": "true",
-            "awslogs-group": "/ecs/ubuntu",
-            "awslogs-region": "us-east-1",
-            "awslogs-stream-prefix": "ecs"
-          }
-         }
-        }
-      ],
-   
-    "networkMode": "awsvpc",
-    "requiresCompatibilities": ["FARGATE"],
-    "executionRoleArn": "arn:aws:iam::638548311250:role/Fargate-ECR-Policy",
-    "cpu": "512",
-    "memory": "1024"
+    "cluster": "lv-cluster",
+    "service": "lv-cluster",
+    "forceNewDeployment": true,
+    "networkConfiguration": {
+      "awsvpcConfiguration": {
+        "subnets": ["subnet-12345", "subnet-12345"],
+        "securityGroups": ["sg-0183c81c5480457f7"],
+        "assignPublicIp": "ENABLED"
+      }
+    },
+    "deploymentConfiguration": {
+      "maximumPercent": 200,
+      "minimumHealthyPercent": 50
+    },
+    "healthCheckGracePeriodSeconds": 31500000
   }
