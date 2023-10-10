@@ -1,10 +1,10 @@
 # ---- root/main
 
 variable "container_name" {
-  default = "leeva-teste"
+  default = "leeva-container"
 }
 variable "container_image" {
-  default = "114148051138.dkr.ecr.us-east-1.amazonaws.com/docker:latest"
+  default = "public.ecr.aws/t2a7r0x0/my-public-repo:latest"
 }
 variable "cluster_name" {
   default = "lv-cluster"
@@ -13,7 +13,7 @@ variable "capacity_provider" {
   default = "FARGATE"
 }
 variable "family" {
-  default = "nginx"
+  default = "tk-leeva"
 }
 variable "network_mode" {
   default = "awsvpc"
