@@ -42,9 +42,6 @@ jobs:
     - name: Initialize Terraform
       run: terraform init
 
-    - name: Plan Infrastructure Changes
-      run: terraform plan
-
     - name: "Manual Approval for Terraform"
       id: terraform-approval
       run: echo "::set-output name=approved::false"  # Defina como 'true' manualmente após revisar o plano Terraform
