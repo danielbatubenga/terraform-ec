@@ -40,10 +40,15 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Build, tag, and push image to Amazon ECR
+        id: build-image
+        env:
+          ECR_REGISTRY: public.ecr.aws/t2a7r0x0
+          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
+          IMAGE_TAG: latest
         run: |
-          docker build -t public.ecr.aws/t2a7r0x0/my-public-repo:latest
-          docker push public.ecr.aws/t2a7r0x0/my-public-repo:latest
-  
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Download task definition
         run: |
