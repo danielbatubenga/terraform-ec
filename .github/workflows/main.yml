@@ -6,11 +6,7 @@ on:
       - main 
 
 jobs:
-<<<<<<< HEAD
   build-docker:
-=======
-  build:
->>>>>>> 440f517beee5898808c9de8110b95fb0233fbcc3
     runs-on: ubuntu-latest
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
